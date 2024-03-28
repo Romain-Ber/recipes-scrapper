@@ -30,3 +30,13 @@ puts "seeded #{User.count} users"
 end
 
 puts "seeded #{Post.count} posts"
+
+50.times do
+  Comment.create!(
+    user: User.all.sample,
+    post: Post.all.sample,
+    content: Faker::Lorem.sentence
+  )
+end
+
+puts "seeded #{Comment.count} comments"
