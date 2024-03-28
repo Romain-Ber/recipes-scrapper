@@ -1,0 +1,8 @@
+<h1>index</h1>
+<div class="post-list">
+  <% @posts.each do |post| %>
+    <%= link_to post_path(post) do %>
+      <%= render "card", post: post %>
+    <% end %>
+  <% end %>
+</div>
