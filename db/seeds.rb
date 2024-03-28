@@ -1,4 +1,6 @@
 require 'faker'
+require "open-uri"
+require "nokogiri"
 
 Faker::Config.locale = :fr
 
@@ -6,7 +8,7 @@ Comment.destroy_all
 Post.destroy_all
 User.destroy_all
 
-User.create!(nickname: "Romain", email: "romain@mail.com", password: "123456")
+admin = User.create!(nickname: "bonnebouffe.shop", email: "admin@mail.com", password: "123456")
 
 10.times do
   nickname = Faker::Name.first_name
@@ -20,18 +22,25 @@ end
 
 puts "seeded #{User.count} users"
 
-5.times do
+ingredient = "beef"
+url = "https://www.bbcgoodfood.com/search/recipes?query=#{ingredient}"
+html_file = URI.open(url).read
+html_doc = Nokogiri::HTML.parse(html_file)
+html_doc.search(".layout-md-rail__primary .card").each do |element|
+  title = element.at_css(".card__content a").text.strip
+  recipe_url = "https://www.bbcgoodfood.com"+element.at_css(".card__content a").attribute("href").value
+  content = element.at_css(".card__content p").inner_html
   Post.create!(
-    user: User.all.sample,
-    title: Faker::Lorem.sentence,
-    content: Faker::Lorem.paragraph,
-    url: Faker::Internet.url
+    user: admin,
+    title: title,
+    url: recipe_url,
+    content: content
   )
 end
 
 puts "seeded #{Post.count} posts"
 
-50.times do
+25.times do
   Comment.create!(
     user: User.all.sample,
     post: Post.all.sample,
