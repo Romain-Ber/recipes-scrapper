@@ -1,0 +1,7 @@
+<%= simple_form_for @post do |f| %>
+  <div class="field">
+    <%= f.label :url, "Enter the link to a valid bbcgoodfood recipe article" %>
+    <%= f.input :url, placeholder: "https://www.bbcgoodfood.com/recipes/slow-cooker-beef-stew" %>
+  </div>
+  <%= f.button :submit, "Reference Recipe", class: "btn btn-primary" %>
+<% end %>

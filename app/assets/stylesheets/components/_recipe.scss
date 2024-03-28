@@ -7,15 +7,28 @@
   display: flex;
   margin-bottom: 24px;
   padding: 16px;
-  background-color: rgba($color: #b1b1b1, $alpha: 1.0);
+  background-color: rgba($color: #e9dab9, $alpha: 1.0);
   border-radius: 4px;
 }
 
 .recipe-photo {
+  width: 400px;
+  height: 400px;
   margin-right: 16px;
 }
 
 .recipe-content {
   display: flex;
   flex-direction: column;
+}
+
+.recipe-content-url {
+  padding: 8px;
+  border-radius: 4px;
+  background-color: rgba($color: #f3b200, $alpha: 0.2);
+  border: 1px solid #ffffff;
+}
+
+.recipe-content-url a {
+  font-size: 14px;
 }

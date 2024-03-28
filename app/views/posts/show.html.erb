@@ -1,18 +1,24 @@
-<%= link_to 'Posts', posts_path, class: 'btn btn-primary' %>
-
 <div class="show-container">
+  <%= link_to '< back to recipe articles', posts_path %>
+
   <div class="recipe-container">
-      <img class="recipe-photo" src=<%= @bigger_photo %>>
-      <div class="recipe-content">
-      <h2><%= @post.title %></h2>
-      <p><%= @post.content %></p>
-      <a href="<%= @post.url %>" target="_blank"><%= @post.url %></a>
+    <img class="recipe-photo" src=<%= @bigger_photo %>>
+    <div class="recipe-content">
+      <div class="recipe-content-info">
+        <h2><%= @post.title %></h2>
+        <p><%= @post.content %></p>
+      </div>
+      <div class="recipe-content-url">
+        <a href="<%= @post.url %>" target="_blank"><%= @post.url %></a>
+      </div>
     </div>
   </div>
 
-  <%= render "form", post: @post, user: @user %>
+  <div class="comment-container">
+    <% @comments.each do |comment| %>
+      <%= render "card_comment", comment: comment %>
+    <% end %>
+    <%= render "form_comment", post: @post, user: @user %>
+  </div>
 
-  <% @comments.each do |comment| %>
-    <%= render "card_comment", comment: comment %>
-  <% end %>
 </div>
