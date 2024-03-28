@@ -1,13 +1,18 @@
-<h1>show</h1>
-
 <%= link_to 'Posts', posts_path, class: 'btn btn-primary' %>
 
-<h2><%= @post.title %></h2>
-<p><%= @post.content %></p>
-<a href="<%= @post.url %>"><%= @post.url %></a>
+<div class="show-container">
+  <div class="recipe-container">
+      <img class="recipe-photo" src=<%= @bigger_photo %>>
+      <div class="recipe-content">
+      <h2><%= @post.title %></h2>
+      <p><%= @post.content %></p>
+      <a href="<%= @post.url %>" target="_blank"><%= @post.url %></a>
+    </div>
+  </div>
 
-<%= render "form", post: @post, user: @user %>
+  <%= render "form", post: @post, user: @user %>
 
-<% @comments.each do |comment| %>
-  <%= render "card_comment", comment: comment %>
-<% end %>
+  <% @comments.each do |comment| %>
+    <%= render "card_comment", comment: comment %>
+  <% end %>
+</div>

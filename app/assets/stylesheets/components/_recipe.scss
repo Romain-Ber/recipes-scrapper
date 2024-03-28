@@ -1,6 +1,21 @@
-.recipe-card {
-  padding: 8px;
-  margin: 8px;
-  background-color: rgba($color: #c9c9c9, $alpha: 1.0);
-  display:flex;
+.show-container {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.recipe-container {
+  display: flex;
+  margin-bottom: 24px;
+  padding: 16px;
+  background-color: rgba($color: #b1b1b1, $alpha: 1.0);
+  border-radius: 4px;
+}
+
+.recipe-photo {
+  margin-right: 16px;
+}
+
+.recipe-content {
+  display: flex;
+  flex-direction: column;
 }
