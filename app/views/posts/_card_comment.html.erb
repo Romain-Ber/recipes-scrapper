@@ -1,2 +1,5 @@
-<p><%= comment.user.nickname %></p>
-<p><%= comment.content %></p>
+<div class="comment-card">
+  <p><strong><%= comment.user.nickname %></strong> said:</p>
+  <p><%= comment.content %></p>
+  <p><%= comment.created_at %></p>
+</div>

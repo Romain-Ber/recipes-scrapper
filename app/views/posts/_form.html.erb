@@ -1,7 +1,0 @@
-<%= simple_form_for [@post, Comment.new] do |f| %>
-  <div class="field">
-    <%= f.label "Comment" %>
-    <%= f.text_area :content %>
-  </div>
-  <%= f.button :submit, class: "btn btn-primary" %>
-<% end %>
