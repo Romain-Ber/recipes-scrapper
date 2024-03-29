@@ -1,26 +1,53 @@
-<div class="show-container">.
-  <div style="padding: 16px;">
-    <%= link_to '< back to recipe articles', posts_path, class:"btn-ghost" %>
+<div class="show-container">
+  <div class="button-container">
+    <div style="padding: 16px; margin-bottom: 16px;">
+      <%= link_to '< back to recipe articles', posts_path, class:"btn-ghost" %>
+    </div>
+    <div style="padding: 16px; margin-bottom: 16px;">
+      <%= link_to 'take me to a random article!', post_path(Post.all.sample), class:"btn-ghost" %>
+    </div>
   </div>
-
   <div class="recipe-container">
-    <img class="recipe-photo" src=<%= @bigger_photo %>>
-    <div class="recipe-content">
-      <div class="recipe-content-info">
-        <h2><%= @post.title %></h2>
-        <p><%= @post.content %></p>
-      </div>
+    <%= link_to @post.url, target:"_blank" do %>
       <div class="recipe-content-url">
-        <a href="<%= @post.url %>" target="_blank"><%= @post.url %></a>
+        <p><%= @post.url %></p>
+      </div>
+    <% end %>
+    <div class="recipe">
+      <img class="recipe-photo" src=<%= @html_doc.at_css(".post-header__image-container .image__img").attribute("src").value %>>
+      <div class="recipe-content">
+        <div class="recipe-content-title">
+          <h2><%= @post.title %></h2>
+        </div>
+        <div class="recipe-content-desc">
+          <p><%= @post.content %></p>
+        </div>
+      </div>
+    </div>
+    <div class="recipe-subcontainer">
+      <div class="recipe-ingredients">
+        <h2>Ingredients</h2>
+        <% @html_doc.search(".recipe__ingredients .list-item").each do |element| %>
+          <p><%= element.text.strip %></p>
+        <% end %>
+      </div>
+      <div class="recipe-instructions">
+        <h2>Instructions</h2>
+        <% count = 1 %>
+        <% @html_doc.search(".recipe__method-steps p").each do |element| %>
+          <h3>Step <%= count %></h3>
+          <p><%= element.text.strip %></p>
+          <% count += 1 %>
+        <% end %>
       </div>
     </div>
   </div>
 
   <div class="comment-container">
+    <h2>Comments</h2>
     <% @comments.each do |comment| %>
       <%= render "card_comment", comment: comment %>
     <% end %>
     <%= render "form_comment", post: @post, user: @user %>
   </div>
-
 </div>

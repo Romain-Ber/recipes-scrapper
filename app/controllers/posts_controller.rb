@@ -8,12 +8,10 @@ class PostsController < ApplicationController
   end
 
   def show
-    @comments = @post.comments.order(created_at: :desc)
+    @comments = @post.comments.order(created_at: :asc)
     @user = current_user
-
     html_file = URI.open(@post.url).read
-    html_doc = Nokogiri::HTML.parse(html_file)
-    @bigger_photo = html_doc.at_css(".post-header__image-container .image__img").attribute("src").value
+    @html_doc = Nokogiri::HTML.parse(html_file)
   end
 
   def create

@@ -10,9 +10,12 @@ User.destroy_all
 
 admin = User.create!(nickname: "bonnebouffe.shop", email: "admin@mail.com", password: "123456")
 
-20.times do
+50.times do
   nickname = Faker::Name.first_name
   email = "#{nickname.unicode_normalize(:nfkd).encode('ASCII', replace: '').downcase.gsub(/\s+/, "")}@mail.com"
+  if User.all.any? { |user| user.email == email }
+    email += "#{rand(1..90000)}"
+  end
   User.create!(
     nickname: nickname,
     email: email,
