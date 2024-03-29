@@ -3,7 +3,7 @@ require "nokogiri"
 class PostsController < ApplicationController
   before_action :set_post, only: [:show]
   def index
-    @posts = Post.all
+    @posts = Post.order(id: :desc)
     @post = Post.new
   end
 
@@ -18,7 +18,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    if @post.url.include?("www.bbcgoodfood.com/recipes/")
+    begin
       html_file = URI.open(@post.url).read
       html_doc = Nokogiri::HTML.parse(html_file)
       @post.title = html_doc.at_css(".post-header__title .heading-1").text
@@ -30,8 +30,8 @@ class PostsController < ApplicationController
       else
         redirect_to @posts, notice: "Invalid recipe article url!"
       end
-    else
-      redirect_to posts_path, notice: "Invalid recipe article url!"
+    rescue StandardError
+      redirect_to posts_path, notice: "Invalid recipe article url or article not found!"
     end
   end
 
