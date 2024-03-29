@@ -1,5 +1,7 @@
 <div class="post-container">
-  <%= render "form_post", post: @post %>
+  <div class="new-post-container">
+    <%= render "form_post", post: @post %>
+  </div>
 
   <% @posts.each do |post| %>
     <%= render "card_post", post: post %>

@@ -8,11 +8,13 @@
   margin: 16px 0;
   background-color: rgba($color: #e9dab9, $alpha: 1.0);
   display:flex;
+  border-radius: 8px;
+  box-shadow: 2px 2px 4px rgba($color: #000, $alpha: 0.2);
 }
 
 .post-img {
-  height: 85px;
-  width: 93px;
+  width: 150px;
+  height: 125px;
   margin-right: 8px;
 }
 
@@ -23,8 +25,18 @@
 
 .post-content h2 {
   font-size: 20px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #000;
 }
 
 .post-content p {
-  font-size: 16px;
+  font-size: 14px;
+}
+
+.new-post-container {
+  margin-top: 16px;
+  background-color: rgba($color: #e9dab9, $alpha: 1.0);
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 4px rgba($color: #000, $alpha: 0.2);
 }

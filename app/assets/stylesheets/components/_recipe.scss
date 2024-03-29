@@ -9,6 +9,7 @@
   padding: 16px;
   background-color: rgba($color: #e9dab9, $alpha: 1.0);
   border-radius: 4px;
+  box-shadow: 2px 2px 4px rgba($color: #000, $alpha: 0.2);
 }
 
 .recipe-photo {
@@ -25,6 +26,7 @@
 .recipe-content-url {
   padding: 8px;
   border-radius: 4px;
+  box-shadow: 2px 2px 4px rgba($color: #000, $alpha: 0.2);
   background-color: rgba($color: #f3b200, $alpha: 0.2);
   border: 1px solid #ffffff;
 }
