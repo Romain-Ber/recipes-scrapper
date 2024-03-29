@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @comments = @post.comments
+    @comments = @post.comments.order(created_at: :desc)
     @user = current_user
 
     html_file = URI.open(@post.url).read
