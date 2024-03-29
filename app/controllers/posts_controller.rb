@@ -30,8 +30,8 @@ class PostsController < ApplicationController
       else
         redirect_to @posts, notice: "Invalid recipe article url!"
       end
-    rescue StandardError
-      redirect_to posts_path, notice: "Invalid recipe article url or article not found!"
+    rescue
+      redirect_to posts_path, notice: "Invalid url or article not found!"
     end
   end
 
