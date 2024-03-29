@@ -1,7 +1,7 @@
 <%= simple_form_for @post do |f| %>
+  <p>To add a new recipe article, please enter a valid bbcgoodfood.com url</p>
   <div class="field">
-    <%= f.label :url, "Enter the link to a valid bbcgoodfood recipe article" %>
-    <%= f.input :url, placeholder: "https://www.bbcgoodfood.com/recipes/lighter-beef-stew-dumplings" %>
+    <%= f.input :url, label: false, placeholder: "https://www.bbcgoodfood.com/recipes/lighter-beef-stew-dumplings" %>
   </div>
   <%= f.button :submit, "Add Recipe Article", class: "btn btn-ghost" %>
 <% end %>
