@@ -19,7 +19,8 @@
             <%= link_to "Articles", posts_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Contribute", "#", class: "nav-link" %>
+            <% random = Post.all.sample %>
+            <%= link_to "Random", post_path(random), class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
             <%= image_tag "https://d1nhio0ox7pgb.cloudfront.net/_img/g_collection_png/standard/256x256/menu.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>

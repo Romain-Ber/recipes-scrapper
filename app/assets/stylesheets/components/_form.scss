@@ -1,4 +1,22 @@
-.field {
+.new-post-container {
+  margin-top: 16px;
+  background-color: rgba($color: #e9dab9, $alpha: 1.0);
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 4px rgba($color: #000, $alpha: 0.2);
+  border: 1px solid rgba($color: #000000, $alpha: 0.3);
+}
+
+.new-post-container p {
+  margin-left: 12px;
+}
+
+.form-field {
   display: flex;
   flex-direction: column;
+}
+
+.form-submit {
+  display: flex;
+  justify-content: center;
 }
